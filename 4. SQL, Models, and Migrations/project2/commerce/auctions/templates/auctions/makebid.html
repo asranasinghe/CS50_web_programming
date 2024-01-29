@@ -1,0 +1,25 @@
+
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Make Bid On {{ listing_info.title }} (ID{{ listing_info.id }})</h2>
+
+    <form action="{% url 'makebid' listing_info.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit", value="Submit">
+    </form>
+
+    <br>
+
+    <h4>Bidding History</h4>
+
+    <ul>
+        {% for bid in bids %}
+            <li>
+                {{bid.bidder}}: {{ bid.price }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

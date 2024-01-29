@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{ listing.title }} (ID{{ listing.id }})</h2>
+
+    <ul>
+            <li>Description: {{ listing.description }}</li>
+            <li>Price: {{ listing.price }}</li>
+            <li>Listed by {{ listing.owner }}</li>
+
+    </ul>
+
+    <a href="{% url 'makebid' listing.id %}">Make A Bid</a>
+
+
+{% endblock %}
